@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d359947-e7e9-4f36-9a04-dd4580bc69e9" name="Changes" comment="a little bit of everything">
-      <change afterPath="$PROJECT_DIR$/.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.html" beforeDir="false" afterPath="$PROJECT_DIR$/HomeController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeController.html" beforeDir="false" afterPath="$PROJECT_DIR$/HomeController.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/converter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cs_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cs_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/objects.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/cs_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cs_parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/html.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/html.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/objects.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cs_objects.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

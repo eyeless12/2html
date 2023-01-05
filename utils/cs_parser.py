@@ -1,5 +1,4 @@
 import utils.cs_objects as cs_obj
-ACCESS_LEVELS = ['public', 'private', 'internal', 'protected']
 
 
 class CsharpParser(object):
@@ -56,8 +55,6 @@ class CsharpParser(object):
         split = full_declaration.split('(')
         name = split[0].split()[-1]
         return_type = split[0]
-        if len(split[0]) > 1 and split[0].split()[-2] not in ACCESS_LEVELS:
-            return_type = split[0].split()[-2]
         arguments = self.get_method_arguments(split[1][:-1])
         body_length = 0
         for i in range(len(method[declaration_length:])):
