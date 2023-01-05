@@ -1,4 +1,4 @@
-import utils.objects as cs_obj
+import utils.cs_objects as cs_obj
 ACCESS_LEVELS = ['public', 'private', 'internal', 'protected']
 
 

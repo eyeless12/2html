@@ -1,0 +1,17 @@
+
+    <html>
+      <head>
+        <title>HomeController</title>
+      </head>
+      <body>
+          <h2>Класс HomeController, наследуется от Controller</h2>
+        <p>Поля: <ul>
+          <li>_repository: IChatRepository</li>
+          <li>_serializer: ISerializer</li>
+        </ul>
+        <p>Методы:</p> <ul>
+          <li>    public HomeController HomeController(repository: IChatRepository, serializer: ISerializer)</li>
+          <li>JsonResult Index()</li>
+          <li>JsonResult CreateRoom(creatorName: string, roomName: string, password: string, capacity: int)</li>
+          <li>JsonResult Ping(timeRepresentation: string)</li>
+        </ul>
