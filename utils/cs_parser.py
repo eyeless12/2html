@@ -1,15 +1,15 @@
-import objects as s
+import utils.objects as cs_obj
 ACCESS_LEVELS = ['public', 'private', 'internal', 'protected']
 
 
 class CsharpParser(object):
-    def parse_field(self, line: str) -> s.Field:
+    def parse_field(self, line: str) -> cs_obj.Field:
         if '=' in line:
             line = line.split('=')[0]
         field_arr = line.split()
         field_type = field_arr[-2]
         field_name = field_arr[-1].strip().strip(';')
-        return s.Field(field_name, field_type)
+        return cs_obj.Field(field_name, field_type)
 
     def adjust_brace_level(self, line: str, braces='{}') -> int:
         lvl = 0
@@ -19,7 +19,7 @@ class CsharpParser(object):
             lvl -= 1
         return lvl
 
-    def parse_property(self, prop: list[str]) -> s.Property:
+    def parse_property(self, prop: list[str]) -> cs_obj.Property:
         line = prop[0]
         line = line.split('{')[0]
         prop_arr = line.split()
@@ -33,7 +33,7 @@ class CsharpParser(object):
                 self.adjust_brace_level(line)
                 if brace_lvl == 0:
                     break
-        return s.Property(prop_name, prop_type, length)
+        return cs_obj.Property(prop_name, prop_type, length)
 
     def get_method_arguments(self, args: str) -> dict:
         types_names = args.split(',')
@@ -44,7 +44,7 @@ class CsharpParser(object):
                 result[p[1].strip(' )')] = p[0].strip()
         return result
 
-    def parse_method(self, method: list[str]) -> s.Method:
+    def parse_method(self, method: list[str]) -> cs_obj.Method:
         curly_brace_level = 0
 
         declaration_length = 1
@@ -65,7 +65,7 @@ class CsharpParser(object):
             if curly_brace_level == 0 and i > 0:
                 body_length = i
                 break
-        result = s.Method(name)
+        result = cs_obj.Method(name)
         result.return_type = return_type
         result.length = declaration_length + body_length
         result.arguments = arguments
@@ -88,12 +88,12 @@ class CsharpParser(object):
             parents_no_whitespaces.append(parent.strip())
         return name, parents_no_whitespaces
 
-    def parse_class(self, sharp_class: list[str]) -> s.Class:
+    def parse_class(self, sharp_class: list[str]) -> cs_obj.Class:
         loop_mark = 1
         brace_level = 0
         class_length = 0
         name_parents = self.get_class_name_and_parents(sharp_class)
-        parsed_class = s.Class(name_parents[0], parents=name_parents[1])
+        parsed_class = cs_obj.Class(name_parents[0], parents=name_parents[1])
         for i in range(1, len(sharp_class)):
             brace_level += self.adjust_brace_level(sharp_class[i])
             if i < loop_mark:
@@ -124,10 +124,10 @@ class CsharpParser(object):
     def get_namespace_name(self, declaration: str):
         return declaration.split()[-1]
 
-    def parse_namespace(self, namespace: list[str]) -> s.Namespace:
+    def parse_namespace(self, namespace: list[str]) -> cs_obj.Namespace:
         brace_level = 0
         loop_mark = 0
-        parsed_namespace = s.Namespace(self.get_namespace_name(namespace[0]))
+        parsed_namespace = cs_obj.Namespace(self.get_namespace_name(namespace[0]))
         for i in range(len(namespace)):
             if i < loop_mark:
                 continue
@@ -142,7 +142,7 @@ class CsharpParser(object):
             else:
                 loop_mark += 1
 
-    def parse_file(self, code: list[str]) -> list[s.CodeGroup]:
+    def parse_file(self, code: list[str]) -> list[cs_obj.CodeGroup]:
         loop_mark = 0
         namespaces = []
         no_namespace_classes = []
